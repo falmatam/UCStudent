@@ -1,11 +1,22 @@
+<?php
+//require_once('postClass.php');
+//session_start();
+?>
 <!DOCTYPE HTML> 
 <html>
 <head>
-<style>
-.error {color: #FF0000;}
-</style>
+  <link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
 </head>
 <body> 
+
+
+<nav id="nav-page">
+  <div>
+    <div>
+      <span><center><p>SUBMISSION PAGE</p><center></span>
+    </div>
+  </div>
+</nav>
 
 <?php
 include_once 'postClass.php';
@@ -60,23 +71,25 @@ function test_input($data) {
 }
 ?>
 
-<h2>New Post</h2>
-<p><span class="error">* required field.</span></p>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
-   Title: <input type="text" name="title" value="<?php echo $title;?>">
-   <span class="error">* <?php echo $titleErr;?></span>
-   <br><br>
-   Price: <input type="text" name="price" value="<?php echo $price;?>">
-   <span class="error">* <?php echo $priceErr;?></span>
-   <br><br>
-   Location: <input type="text" name="location" value="<?php echo $location;?>">
-   <span class="error">* <?php echo $locationErr;?></span>
-   <br><br>
-   Description: <textarea name="description" rows="5" cols="40"><?php echo $description;?></textarea>
-   <span class="error">* <?php echo $descriptionErr;?></span>
-   <br><br>
-   <input type="submit" name="submit" value="Create"> 
-</form>
+<div class="form">
+  <h2>New Post</h2>
+    <p><span class="error">* required field.</span></p>
+      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+         Title: <input type="text" name="title" value="<?php echo $title;?>" placeholder="Title">
+         <span class="error">* <?php echo $titleErr;?></span>
+         <br><br>
+         Price: <input type="text" name="price" value="<?php echo $price;?>" placeholder="10.00">
+         <span class="error">* <?php echo $priceErr;?></span>
+         <br><br>
+         Location: <input type="text" name="location" value="<?php echo $location;?>" placeholder="Irvine, CA">
+         <span class="error">* <?php echo $locationErr;?></span>
+         <br><br>
+         Description: <textarea name="description" placeholder="Description"><?php echo $description;?></textarea>
+         <span class="error">* <?php echo $descriptionErr;?></span>
+         <br><br>
+         <input type="submit" name="submit" value="Create"> 
+      </form>
+<div>
 
 <?php
 if (isset($_POST['submit']) && empty($titleErr) && empty($priceErr) && empty($locationErr) && empty($descriptionErr))
